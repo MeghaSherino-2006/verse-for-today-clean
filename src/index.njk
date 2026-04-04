@@ -1,0 +1,176 @@
+<div style="
+  font-family: Georgia, serif;
+  background:#f6f2ec;
+  padding:20px;
+">
+
+<div style="max-width:800px; margin:auto;">
+
+  <!-- Header -->
+  <div style="text-align:center; margin-bottom:20px;">
+    <h1>Lumen Christi</h1>
+    <p style="color:#777;">
+      I am powerful when I am with the Lord, than in myself.
+    </p>
+
+    <a href="/timeline" style="
+      display:inline-block;
+      margin-top:10px;
+      padding:8px 16px;
+      background:#333;
+      color:white;
+      border-radius:6px;
+      text-decoration:none;
+    ">
+      View Timeline
+    </a>
+  </div>
+
+  <hr>
+
+  <!-- ✅ FIX: Use Eleventy collection -->
+  {% set postsOnly = collections.posts %}
+  {% set latestPost = postsOnly | sort(attribute="date") | reverse | first %}
+
+  <!-- 🌅 Today's Message -->
+  <div style="
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    text-align:center;
+    margin-bottom:30px;
+  ">
+    <h2> Today’s Message</h2>
+
+    <h3>
+      <a href="{{ latestPost.url }}" style="text-decoration:none; color:#333;">
+        {{ latestPost.data.title }}
+      </a>
+    </h3>
+
+    <p style="color:#888;">
+      {{ latestPost.date | formatDate }}
+    </p>
+
+    <a href="{{ latestPost.url }}" style="
+      display:inline-block;
+      margin-top:15px;
+      padding:10px 20px;
+      background:#333;
+      color:white;
+      border-radius:6px;
+      text-decoration:none;
+    ">
+      Read More →
+    </a>
+  </div>
+
+  <!-- 🎲 Random Button -->
+  <div style="text-align:center; margin:20px;">
+    <button onclick="randomPost()" style="
+      padding:10px 20px;
+      border:none;
+      background:#444;
+      color:white;
+      border-radius:6px;
+      cursor:pointer;
+    ">
+      Random Message
+    </button>
+  </div>
+
+  <!-- 📚 Posts List -->
+  <ul id="postList" style="list-style:none; padding:0;">
+  {% for post in postsOnly | sort(attribute="date") | reverse %}
+    <li class="post-item" style="
+      display:none;
+      background:white;
+      padding:15px;
+      margin-bottom:15px;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+    ">
+      <a href="{{ post.url }}" style="
+        text-decoration:none;
+        font-size:18px;
+        color:#333;
+      ">
+        {{ post.data.title }}
+      </a>
+      <br>
+      <small style="color:#888;">
+        {{ post.date | formatDate }}
+      </small>
+    </li>
+  {% endfor %}
+  </ul>
+
+  <!-- Load More -->
+  <div style="text-align:center; margin-top:20px;">
+    <button onclick="loadMore()" style="
+      padding:10px 20px;
+      background:#333;
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    ">
+      Load More
+    </button>
+  </div>
+
+  <!-- About -->
+  <hr>
+
+  <div style="
+    margin-top:40px;
+    padding:25px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  ">
+    <h3>About the Author</h3>
+    <p style="color:#555; line-height:1.7;">
+      Dr. Mini Sherino is a visionary academic and distinguished professional whose path of purpose is marked by excellence, intellectual depth, and refined commitment to Christian morality.
+      <br><br>
+      The Word of God is a lamp to our feet and a light to our path. It transforms, restores, and guides us toward a life filled with grace and purpose.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <div style="
+    text-align:center;
+    margin-top:20px;
+    color:#777;
+    font-size:14px;
+  ">
+    © 2026 Dr. Mini Sherino. All rights reserved.
+  </div>
+
+</div>
+</div>
+
+<!-- Scripts -->
+<script>
+let visiblePosts = 5;
+
+function loadMore() {
+  const posts = document.querySelectorAll(".post-item");
+
+  for (let i = 0; i < visiblePosts; i++) {
+    if (posts[i]) posts[i].style.display = "block";
+  }
+
+  visiblePosts += 5;
+}
+
+function randomPost() {
+  const links = document.querySelectorAll("#postList a");
+  const random = links[Math.floor(Math.random() * links.length)];
+  window.location = random.href;
+}
+
+// Initial load
+window.onload = loadMore;
+</script>

@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "Daily Messages"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}"
+
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+
+      - { label: "Date", name: "date", widget: "datetime", default: "{{now}}" }
+
+      - { label: "Verse", name: "verse", widget: "text" }
+
+      - { label: "Reflection", name: "reflection", widget: "markdown" }
+
+      - { label: "Prayer", name: "prayer", widget: "text" }
+
+      - { label: "Author", name: "author", widget: "string", default: "Dr. Mini Sherino" }

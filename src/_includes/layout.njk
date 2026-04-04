@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 30px;
+      background: #fdfaf6;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .date {
+      text-align: center;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    .content {
+      font-size: 18px;
+    }
+
+    .author-box {
+      margin-top: 50px;
+      padding: 20px;
+      background: #fff;
+      border-left: 4px solid #ccc;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #444;
+    }
+
+    h3 {
+  border-left: 4px solid #ccc;
+  padding-left: 10px;
+  margin-top: 30px;
+}
+  </style>
+</head>
+
+<body>
+
+  <h1>{{ title }}</h1>
+  <p class="date">{{ date }}</p>
+
+  <div class="content">
+
+  <!-- ✅ NEW CMS FORMAT -->
+  {% if verse or reflection or prayer %}
+
+    {% if verse %}
+      <h3>Verse for Today</h3>
+      <blockquote>{{ verse }}</blockquote>
+    {% endif %}
+
+    {% if reflection %}
+      <h3>Reflection</h3>
+      <div>{{ reflection | safe }}</div>
+    {% endif %}
+
+    {% if prayer %}
+      <h3>Prayer</h3>
+      <p><em>{{ prayer }}</em></p>
+    {% endif %}
+
+    {% if author %}
+      <h3>Author</h3>
+      <p><strong>{{ author }}</strong></p>
+    {% endif %}
+
+  {% else %}
+
+  <!-- ✅ OLD MARKDOWN FORMAT FALLBACK -->
+    {{ content | safe }}
+
+  {% endif %}
+
+</div>
+</div>
+  <a href="/" style="display:block; margin-top:40px; text-align:center;">
+  ← Back to Home
+</a>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy 2026 Mini Sherino. All rights reserved.
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+---
+layout: layout.njk
+title: "Timeline"
+---
+
+<h1 style="text-align:center;">🧭 Spiritual Journey</h1>
+
+<p style="text-align:center; color:#777;">
+  Walk through years of faith and reflection
+</p>
+
+<hr>
+
+{% for year, posts in collections.postsByYear %}
+
+  <h2 style="margin-top:40px;">{{ year }}</h2>
+
+  <ul style="list-style:none; padding-left:0;">
+    {% for post in posts %}
+      <li class="year-{{ year }}" style="
+        display:none;
+        margin-bottom:15px;
+        padding:15px;
+        background:white;
+        border-left:4px solid #ccc;
+        border-radius:6px;
+      ">
+        <a href="{{ post.url }}" style="text-decoration:none; font-size:18px; color:#333;">
+          {{ post.data.title }}
+        </a>
+        <br>
+        <small style="color:#888;">
+          {{ post.date | formatDate }}
+        </small>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <!-- Load More Button per Year -->
+  <div style="text-align:center; margin-bottom:20px;">
+    <button onclick="loadMoreYear('{{ year }}')" style="
+      padding:8px 16px;
+      background:#444;
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    ">
+      Load More
+    </button>
+  </div>
+
+{% endfor %}
+
+<script>
+const yearCounters = {};
+
+function loadMoreYear(year) {
+  const posts = document.querySelectorAll(".year-" + year);
+
+  if (!yearCounters[year]) yearCounters[year] = 0;
+
+  for (let i = yearCounters[year]; i < yearCounters[year] + 3; i++) {
+    if (posts[i]) posts[i].style.display = "block";
+  }
+
+  yearCounters[year] += 3;
+}
+
+// Initial load: show first 3 posts per year
+window.onload = () => {
+  const years = [...new Set(
+    Array.from(document.querySelectorAll("[class^='year-']"))
+      .map(el => el.className.replace("year-", ""))
+  )];
+
+  years.forEach(year => loadMoreYear(year));
+};
+</script>
