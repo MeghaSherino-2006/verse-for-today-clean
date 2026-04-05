@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/admin");
     eleventyConfig.addPassthroughCopy("src/images");
+    eleventyConfig.addPassthroughCopy("static");
 
   // ✅ Date filter
   eleventyConfig.addFilter("formatDate", function(dateObj) {
