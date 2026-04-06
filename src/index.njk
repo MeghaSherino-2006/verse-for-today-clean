@@ -189,21 +189,19 @@ window.onload = loadMore;
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <script>
-  if (window.netlifyIdentity) {
+  window.addEventListener("load", function () {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
 
-    // 🔥 IMPORTANT: initialize explicitly
-    window.netlifyIdentity.on("init", function(user) {
+        if (!user && (
+          window.location.hash.includes("confirmation_token") ||
+          window.location.hash.includes("recovery_token")
+        )) {
+          window.netlifyIdentity.open();
+        }
+      });
 
-      // Handle confirmation + recovery tokens
-      if (!user && (
-        window.location.hash.includes("confirmation_token") ||
-        window.location.hash.includes("recovery_token")
-      )) {
-        window.netlifyIdentity.open();
-      }
-    });
-
-    // 🔥 THIS LINE WAS MISSING
-    window.netlifyIdentity.init();
-  }
+      window.netlifyIdentity.init();
+    }
+  });
 </script>
