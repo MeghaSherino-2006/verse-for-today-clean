@@ -1,4 +1,4 @@
-
+site_url: https://versefortoday.netlify.app
 backend:
   name: git-gateway
   branch: main
