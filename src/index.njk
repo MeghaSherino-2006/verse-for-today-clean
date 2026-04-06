@@ -185,3 +185,20 @@ function randomPost() {
 // Initial load
 window.onload = loadMore;
 </script>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function(user) {
+
+      // 🔥 Handle BOTH confirmation + recovery
+      if (!user && (
+        window.location.hash.includes("confirmation_token") ||
+        window.location.hash.includes("recovery_token")
+      )) {
+        window.netlifyIdentity.open();
+      }
+    });
+  }
+</script>
