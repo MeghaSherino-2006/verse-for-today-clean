@@ -190,9 +190,11 @@ window.onload = loadMore;
 
 <script>
   if (window.netlifyIdentity) {
+
+    // 🔥 IMPORTANT: initialize explicitly
     window.netlifyIdentity.on("init", function(user) {
 
-      // 🔥 Handle BOTH confirmation + recovery
+      // Handle confirmation + recovery tokens
       if (!user && (
         window.location.hash.includes("confirmation_token") ||
         window.location.hash.includes("recovery_token")
@@ -200,5 +202,8 @@ window.onload = loadMore;
         window.netlifyIdentity.open();
       }
     });
+
+    // 🔥 THIS LINE WAS MISSING
+    window.netlifyIdentity.init();
   }
 </script>
