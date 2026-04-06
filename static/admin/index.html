@@ -7,13 +7,21 @@
   <!-- Netlify Identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
+  <!-- Manual CMS init -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
+
   <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
 </head>
 
 <body>
+
 <script>
-  window.netlifyIdentity = window.netlifyIdentity || null;
+  CMS.init({
+    config: "/admin/config.yml"
+  });
 
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", function(user) {
@@ -25,5 +33,6 @@
     });
   }
 </script>
+
 </body>
 </html>
