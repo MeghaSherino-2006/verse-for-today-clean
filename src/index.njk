@@ -5,10 +5,32 @@
 ">
 
 <div style="max-width:800px; margin:auto;">
+<!-- Add this RIGHT AFTER: <div style="max-width:800px; margin:auto;"> -->
+
+<!-- Navbar -->
+<div style="
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:white;
+  padding:15px 20px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom:20px;
+">
+  <!-- Nav links -->
+  <div style="display:flex; gap:20px;">
+    <a href="/" style="text-decoration:none; color:#333; font-weight:bold;">Home</a>
+    <a href="/timeline" style="text-decoration:none; color:#333; font-weight:bold;">Timeline</a>
+    <a href="#about" style="text-decoration:none; color:#333; font-weight:bold;">About</a>
+  </div>
+
+  <!-- Logo on right -->
+  <img src="/images/logo.jpg" alt="Logo" style="width:60px; height:60px; object-fit:contain;">
+</div>
 
   <!-- Header -->
   <div style="text-align:center; margin-bottom:20px;">
-  <img src="/images/logo.jpg" alt="Logo" style="width:80px; margin-bottom:10px;">
 
   <h1>Lumen Christi</h1>
   <p style="color:#777;">
@@ -127,7 +149,7 @@
   <!-- About -->
   <hr>
 
-  <div style="
+  <div id="about" style="
     margin-top:40px;
     padding:25px;
     background:white;
