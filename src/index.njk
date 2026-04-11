@@ -3,9 +3,41 @@
   background:#f6f2ec;
   padding:20px;
 ">
+<!-- Side Images -->
+<style>
+  .side-image {
+    position: fixed;
+    top: 20px;
+    width: 520px;
+    height: 90vh;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 1;
+    opacity: 0.92;
+    filter: brightness(0.95);
+  }
+
+  .left-side {
+    left: 0px;
+    width: 420px;
+  }
+
+  .right-side {
+    right: 0px;
+  }
+
+  @media (max-width: 1400px) {
+    .side-image {
+      display: none;
+    }
+  }
+</style>
+
+<img src="/images/left_picture1.jpeg" class="side-image left-side" alt="Inspirational image">
+<img src="/images/right_picture.jpeg" class="side-image right-side" alt="Divine image">
 
 <div style="max-width:800px; margin:auto;">
-<!-- Add this RIGHT AFTER: <div style="max-width:800px; margin:auto;"> -->
 
 <!-- Navbar -->
 <div style="
@@ -13,26 +45,46 @@
   justify-content:space-between;
   align-items:center;
   background:white;
-  padding:15px 20px;
-  border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom:20px;
+  padding:20px 30px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom:30px;
 ">
   <!-- Nav links -->
   <div style="display:flex; gap:20px;">
-    <a href="/" style="text-decoration:none; color:#333; font-weight:bold;">Home</a>
-    <a href="/timeline" style="text-decoration:none; color:#333; font-weight:bold;">Timeline</a>
-    <a href="#about" style="text-decoration:none; color:#333; font-weight:bold;">About</a>
+    <a href="/" style="
+  text-decoration:none;
+  color:#333;
+  font-weight:bold;
+  font-size:18px;
+  transition:0.3s;
+" onmouseover="this.style.color='#666'"
+  onmouseout="this.style.color='#333'">
+  Home
+</a>
+    <a href="/timeline" style="text-decoration:none; color:#333; font-weight:bold; font-size:18px;
+    transition:0.3s;" onmouseover="this.style.color='#666'"
+    onmouseout="this.style.color='#333'">Timeline</a>
+    <a href="#about" style="text-decoration:none; color:#333; font-weight:bold; font-size:18px;
+    transition:0.3s;" onmouseover="this.style.color='#666'"
+    onmouseout="this.style.color='#333'">About</a>
   </div>
 
   <!-- Logo on right -->
-  <img src="/images/logo.jpg" alt="Logo" style="width:60px; height:60px; object-fit:contain;">
+  <img src="/images/logo.jpg" alt="Logo" style="width:90px; height:60px; object-fit:contain;">
 </div>
 
   <!-- Header -->
   <div style="text-align:center; margin-bottom:20px;">
 
-  <h1>Lumen Christi</h1>
+  <h1 style="
+    font-size: 56px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  ">
+  Lumen Christi
+</h1>
   <p style="color:#777;">
     I am powerful when I am with the Lord, than in myself.
   </p>
